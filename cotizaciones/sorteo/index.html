@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>App de Sorteo y Rifa · Servisofts</title>
+  <meta name="description" content="Cotización COT-2026-001: app web y móvil de rifas con coins, pagos por tarjeta y QR, y sorteo en vivo.">
+  <meta name="theme-color" content="#070912">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header data-nav></header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="s-hero">
+      <div class="bg-orbs"><span></span><span></span><span></span></div>
+      <div class="bg-grid"></div>
+      <div class="container s-hero-inner">
+        <div>
+          <a class="back" href="../">← Cotizaciones</a>
+          <span class="eyebrow">COT-2026-001 · Web + móvil</span>
+          <h1>App de <span class="grad-text">Sorteo y Rifa</span></h1>
+          <p class="lead">Usuarios con perfil y billetera de coins, recarga con tarjeta o QR, rifa de <b id="hTotal">600</b> tickets y un sorteo en vivo animado que todos ven al mismo tiempo.</p>
+          <div class="hero-cta">
+            <a href="#demo" class="btn btn-primary">Probar la demo</a>
+            <a href="#inversion" class="btn">Ver inversión</a>
+          </div>
+          <div class="kpis">
+            <div><b id="hTickets">600</b><span>tickets por rifa</span></div>
+            <div><b>2</b><span>métodos de pago</span></div>
+            <div><b>3</b><span>plataformas</span></div>
+          </div>
+        </div>
+        <div class="ticket-hero" aria-hidden="true">
+          <div class="ticket">
+            <div class="ticket-l">
+              <small>RIFA OFICIAL</small>
+              <b id="heroPrize">Moto 0 km</b>
+              <span class="mono">N.º 347</span>
+            </div>
+            <div class="ticket-r"><span class="mono">1.000</span><small>coins</small></div>
+          </div>
+          <div class="ticket t2"><div class="ticket-l"><small>RIFA OFICIAL</small><b>Sorteo en vivo</b><span class="mono">N.º 082</span></div><div class="ticket-r"><span class="mono">🎉</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DEMO ============ -->
+    <section class="section" id="demo">
+      <div class="container demo-wrap">
+        <div class="demo-copy reveal">
+          <span class="eyebrow">Demo interactiva</span>
+          <h2>Pruébala <span class="grad-text">como usuario</span></h2>
+          <p class="lead">Esta es la experiencia que tendrán tus clientes en la web y en el celular.</p>
+          <ol class="demo-steps">
+            <li><b>Crea tu cuenta</b> con nombre, correo y contraseña.</li>
+            <li><b>Compra coins</b> con tarjeta o escaneando un QR.</li>
+            <li><b>Elige tus números</b> de los 600 tickets disponibles.</li>
+            <li><b>Mira el sorteo en vivo</b> cuando se venden todos.</li>
+          </ol>
+          <div class="demo-tools card">
+            <h3>Controles de la demo</h3>
+            <p>Para ver el sorteo sin vender 600 tickets, llena los restantes con compradores de prueba. Abre esta página en otra pestaña con otro usuario y verás el sorteo sincronizado.</p>
+            <div class="tool-btns">
+              <button class="btn btn-sm btn-hot" id="toolFill">⚡ Vender tickets restantes</button>
+              <button class="btn btn-sm" id="toolTab">↗ Abrir otra pestaña</button>
+              <button class="btn btn-sm btn-ghost" id="toolReset">↺ Reiniciar demo</button>
+            </div>
+            <small class="muted">Demo local: los datos se guardan solo en este navegador y los pagos son simulados.</small>
+          </div>
+        </div>
+
+        <div class="phone reveal">
+          <div class="phone-notch"></div>
+          <div class="app" id="app" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FUNCIONALIDADES ============ -->
+    <section class="section section-alt" id="funciones">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Alcance</span>
+          <h2>Qué incluye <span class="grad-text">el proyecto</span></h2>
+        </div>
+        <div class="grid grid-3" id="featGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ FLUJO DEL SORTEO ============ -->
+    <section class="section" id="flujo">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Sorteo transparente</span>
+          <h2>Un resultado que <span class="grad-text">nadie puede manipular</span></h2>
+          <p class="lead">Al abrir la rifa se publica la huella (hash) de una semilla secreta. Al cerrar, se revela la semilla y cualquiera puede comprobar el número ganador.</p>
+        </div>
+        <div class="flow reveal" id="flowList"></div>
+      </div>
+    </section>
+
+    <!-- ============ ARQUITECTURA ============ -->
+    <section class="section section-alt" id="arquitectura">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Tecnología</span>
+          <h2>Arquitectura <span class="grad-text">propuesta</span></h2>
+          <p class="lead">Una sola plataforma, tres canales: web, Android e iOS, conectados en tiempo real.</p>
+        </div>
+        <div class="arch reveal">
+          <div class="arch-col">
+            <div class="arch-node"><span>🌐</span><div><b>App web</b><small>React · responsive · PWA</small></div></div>
+            <div class="arch-node"><span>🤖</span><div><b>App Android</b><small>React Native · Google Play</small></div></div>
+            <div class="arch-node"><span>🍎</span><div><b>App iOS</b><small>React Native · App Store</small></div></div>
+          </div>
+          <div class="arch-link"><i></i><small>HTTPS + WebSocket</small></div>
+          <div class="arch-col">
+            <div class="arch-node core"><span>⚙️</span><div><b>Servidor Servisofts</b><small>API REST · eventos en tiempo real · motor de sorteo</small></div></div>
+            <div class="arch-node"><span>🗄️</span><div><b>Base de datos</b><small>PostgreSQL · transacciones atómicas</small></div></div>
+          </div>
+          <div class="arch-link"><i></i><small>Webhooks</small></div>
+          <div class="arch-col">
+            <div class="arch-node"><span>💳</span><div><b>Pasarela de tarjeta</b><small>Visa · Mastercard</small></div></div>
+            <div class="arch-node"><span>📱</span><div><b>QR interbancario</b><small>Confirmación automática</small></div></div>
+            <div class="arch-node"><span>🛡️</span><div><b>Panel admin</b><small>Rifas, usuarios, reportes</small></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CRONOGRAMA ============ -->
+    <section class="section" id="cronograma">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Cronograma</span>
+          <h2>Entrega en <span class="grad-text" id="totalWeeks">13 semanas</span></h2>
+          <p class="lead">Avances semanales con versiones de prueba para que valides cada módulo.</p>
+        </div>
+        <div class="timeline reveal" id="timeline"></div>
+      </div>
+    </section>
+
+    <!-- ============ INVERSIÓN ============ -->
+    <section class="section section-alt" id="inversion">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Inversión</span>
+          <h2>Detalle <span class="grad-text">por módulo</span></h2>
+        </div>
+        <div class="invest reveal">
+          <div class="card invest-table-wrap">
+            <table class="invest-table">
+              <thead><tr><th>Módulo</th><th class="num">Horas</th><th class="num">Subtotal</th></tr></thead>
+              <tbody id="investBody"></tbody>
+              <tfoot><tr><td>Total</td><td class="num" id="investHours"></td><td class="num" id="investTotal"></td></tr></tfoot>
+            </table>
+          </div>
+          <aside class="invest-side">
+            <div class="card total-card">
+              <small>Inversión total</small>
+              <b id="investBig"></b>
+              <span id="investNote"></span>
+              <a class="btn btn-primary btn-block" href="../../#contacto">Aceptar propuesta</a>
+            </div>
+            <div class="card">
+              <h3>Forma de pago</h3>
+              <ul class="checks"><li>40% al iniciar</li><li>30% al entregar la versión de prueba</li><li>30% al publicar en tiendas</li></ul>
+            </div>
+            <div class="card">
+              <h3>No incluye (costos de terceros)</h3>
+              <ul class="checks muted-list">
+                <li>Comisiones de la pasarela de pago y del QR</li>
+                <li>Cuenta de desarrollador Apple (USD 99/año) y Google Play (USD 25 único)</li>
+                <li>Servidor, dominio y certificados</li>
+                <li>Permisos legales para rifas y sorteos</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+        <p class="legal reveal">Validez de la propuesta: 30 días. Las rifas y sorteos con fines comerciales pueden requerir autorización de la autoridad de juegos competente; recomendamos verificarlo antes del lanzamiento.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer data-footer></footer>
+
+  <script src="../../assets/js/brand.js" data-root="../../" data-active="cotizaciones"></script>
+  <script src="index.js"></script>
+</body>
+</html>

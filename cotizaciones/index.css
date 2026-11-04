@@ -1,0 +1,46 @@
+.q-hero { position: relative; overflow: hidden; padding: clamp(56px, 9vw, 100px) 0 40px; }
+.q-hero-inner { position: relative; z-index: 1; text-align: center; display: flex; flex-direction: column; align-items: center; }
+.q-hero .lead { margin-left: auto; margin-right: auto; }
+.q-search {
+  margin-top: 28px; width: 100%; max-width: 520px; display: flex; align-items: center; gap: 10px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 6px 8px 6px 18px; box-shadow: var(--shadow);
+}
+.q-search svg { width: 18px; height: 18px; color: var(--text-3); flex: none; }
+.q-search input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text); font: inherit; padding: 10px 0; }
+.q-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 18px; }
+.q-filters button {
+  border: 1px solid var(--border); background: var(--surface); color: var(--text-2);
+  padding: 8px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all .2s;
+}
+.q-filters button.on { background: var(--text); color: var(--bg); border-color: transparent; }
+
+.q-list-section { padding-top: 24px; }
+.q-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; }
+.q-card { display: flex; flex-direction: column; padding: 0; overflow: hidden; }
+.q-cover {
+  position: relative; height: 180px; overflow: hidden; display: grid; place-items: center;
+  background: #0b0f24; color: #fff;
+}
+.q-cover::before { content: ""; position: absolute; inset: 0; background: var(--cover, var(--grad)); opacity: .9; }
+.q-cover::after {
+  content: ""; position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,.22) 1px, transparent 1px); background-size: 16px 16px;
+  mask-image: linear-gradient(to bottom, #000, transparent); -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+}
+.q-cover .q-emoji { position: relative; z-index: 1; font-size: 64px; filter: drop-shadow(0 12px 24px rgba(0,0,0,.35)); transition: transform .4s; }
+.q-card:hover .q-emoji { transform: scale(1.12) rotate(-6deg); }
+.q-cover .chip { position: absolute; top: 14px; left: 14px; z-index: 1; background: rgba(0,0,0,.35); color: #fff; border-color: rgba(255,255,255,.2); backdrop-filter: blur(8px); }
+.q-body { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.q-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.q-body h3 { margin: 4px 0 0; font-size: 1.3rem; }
+.q-body p { margin: 0; font-size: 0.95rem; }
+.q-foot { margin-top: auto; padding-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--border); }
+.q-foot small { color: var(--text-3); font-family: var(--font-mono); font-size: 0.78rem; }
+.q-empty { text-align: center; color: var(--text-3); padding: 40px 0; }
+.q-new {
+  border: 2px dashed var(--border-strong); border-radius: var(--radius); display: grid; place-items: center; text-align: center;
+  padding: 32px; color: var(--text-2); min-height: 280px; transition: border-color .2s, color .2s;
+}
+.q-new:hover { border-color: var(--accent); color: var(--text); }
+.q-new b { display: block; font-family: var(--font-display); font-size: 1.2rem; margin: 10px 0 4px; color: var(--text); }
+.q-new .plus { width: 52px; height: 52px; border-radius: 50%; margin: 0 auto; display: grid; place-items: center; font-size: 28px; background: var(--surface-2); }

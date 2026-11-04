@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servisofts</title>
+  <meta name="description" content="Servisofts S.R.L. — Desarrollo de software a medida, aplicaciones web y móviles, y sistemas empresariales.">
+  <meta name="theme-color" content="#070912">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header data-nav></header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="bg-orbs"><span></span><span></span><span></span></div>
+      <div class="bg-grid"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">Software a medida · Web · Móvil</span>
+          <h1>Construimos software que <span class="grad-text">mueve tu negocio</span></h1>
+          <p class="lead">En Servisofts diseñamos y desarrollamos aplicaciones web, apps móviles y sistemas empresariales rápidos, seguros y listos para escalar.</p>
+          <div class="hero-cta">
+            <a href="#contacto" class="btn btn-primary">Cotiza tu proyecto
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="cotizaciones/" class="btn">Ver cotizaciones</a>
+          </div>
+          <ul class="hero-points">
+            <li>Apps iOS y Android</li><li>Pagos con QR y tarjeta</li><li>Tiempo real</li>
+          </ul>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-logo" data-logo="animate"></div>
+          <div class="float-card fc-1">
+            <div class="fc-row"><span class="dot ok"></span><b>Deploy exitoso</b></div>
+            <small>api.servisofts · v2.4.1</small>
+          </div>
+          <div class="float-card fc-2">
+            <small>Ventas hoy</small>
+            <div class="spark"><i style="height:30%"></i><i style="height:55%"></i><i style="height:42%"></i><i style="height:70%"></i><i style="height:58%"></i><i style="height:88%"></i><i style="height:100%"></i></div>
+          </div>
+          <div class="float-card fc-3">
+            <div class="fc-row"><span class="pay-ico">QR</span><div><b>Pago recibido</b><small>Bs 250,00</small></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section class="marquee" aria-label="Tecnologías">
+      <div class="marquee-track">
+        <span>React</span><span>React Native</span><span>Java</span><span>Node.js</span><span>PostgreSQL</span><span>WebSockets</span><span>Docker</span><span>Linux</span><span>Pagos QR</span><span>APIs REST</span>
+        <span>React</span><span>React Native</span><span>Java</span><span>Node.js</span><span>PostgreSQL</span><span>WebSockets</span><span>Docker</span><span>Linux</span><span>Pagos QR</span><span>APIs REST</span>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="section" id="servicios">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Servicios</span>
+          <h2>Todo lo que tu idea necesita para <span class="grad-text">salir al mundo</span></h2>
+          <p class="lead">Desde el primer boceto hasta la publicación en tiendas y el soporte continuo.</p>
+        </div>
+        <div class="grid grid-3" id="servicesGrid"></div>
+      </div>
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section class="section section-alt" id="productos">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Productos</span>
+          <h2>Sistemas listos para <span class="grad-text">tu empresa</span></h2>
+          <p class="lead">Módulos probados en operación real que adaptamos a tu flujo de trabajo.</p>
+        </div>
+        <div class="bento" id="productsGrid"></div>
+      </div>
+    </section>
+
+    <!-- PROCESO -->
+    <section class="section" id="proceso">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Cómo trabajamos</span>
+          <h2>Un proceso claro, <span class="grad-text">sin sorpresas</span></h2>
+        </div>
+        <ol class="steps" id="stepsList"></ol>
+      </div>
+    </section>
+
+    <!-- CTA COTIZACIONES -->
+    <section class="section section-tight">
+      <div class="container">
+        <div class="cta-banner reveal">
+          <div class="bg-orbs"><span></span><span></span></div>
+          <div class="cta-copy">
+            <h2>¿Recibiste una cotización?</h2>
+            <p>Revisa el alcance, el cronograma y prueba la demo interactiva de tu proyecto.</p>
+          </div>
+          <a class="btn btn-primary" href="cotizaciones/">Ir a cotizaciones
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section" id="contacto">
+      <div class="container contact">
+        <div class="reveal">
+          <span class="eyebrow">Contacto</span>
+          <h2>Cuéntanos tu <span class="grad-text">idea</span></h2>
+          <p class="lead">Te respondemos con una propuesta, un cronograma y una estimación de inversión.</p>
+          <ul class="contact-list" id="contactList"></ul>
+        </div>
+        <form class="card contact-form reveal" id="contactForm" novalidate>
+          <label>Nombre<input name="nombre" required autocomplete="name" placeholder="Tu nombre"></label>
+          <label>Empresa<input name="empresa" autocomplete="organization" placeholder="Opcional"></label>
+          <label>Tipo de proyecto
+            <select name="tipo">
+              <option>App web</option><option>App móvil</option><option>Web + móvil</option><option>Sistema empresarial</option><option>Otro</option>
+            </select>
+          </label>
+          <label>Mensaje<textarea name="mensaje" rows="4" required placeholder="¿Qué quieres construir?"></textarea></label>
+          <button class="btn btn-primary btn-block" type="submit">Enviar mensaje</button>
+          <small class="form-note">Se abrirá tu app de correo o WhatsApp con el mensaje listo.</small>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer data-footer></footer>
+
+  <script src="assets/js/brand.js" data-root="./" data-active="home"></script>
+  <script src="index.js"></script>
+</body>
+</html>

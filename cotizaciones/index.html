@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cotizaciones · Servisofts</title>
+  <meta name="description" content="Propuestas y cotizaciones de proyectos de Servisofts S.R.L.">
+  <meta name="theme-color" content="#070912">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header data-nav></header>
+
+  <main>
+    <section class="q-hero">
+      <div class="bg-orbs"><span></span><span></span><span></span></div>
+      <div class="bg-grid"></div>
+      <div class="container q-hero-inner">
+        <span class="eyebrow">Portal de clientes</span>
+        <h1>Cotizaciones <span class="grad-text">Servisofts</span></h1>
+        <p class="lead">Cada propuesta incluye alcance, cronograma, inversión y una demo interactiva para que veas tu proyecto antes de construirlo.</p>
+        <div class="q-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input id="qSearch" type="search" placeholder="Buscar cotización…" aria-label="Buscar cotización">
+        </div>
+        <div class="q-filters" id="qFilters"></div>
+      </div>
+    </section>
+
+    <section class="section q-list-section">
+      <div class="container">
+        <div class="q-list" id="qList"></div>
+        <p class="q-empty" id="qEmpty" hidden>No encontramos cotizaciones con ese filtro.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer data-footer></footer>
+
+  <script src="../assets/js/brand.js" data-root="../" data-active="cotizaciones"></script>
+  <script src="index.js"></script>
+</body>
+</html>

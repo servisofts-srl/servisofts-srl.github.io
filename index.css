@@ -1,0 +1,116 @@
+/* ---------- Hero ---------- */
+.hero { position: relative; padding: clamp(56px, 9vw, 110px) 0 clamp(56px, 8vw, 90px); overflow: hidden; }
+.hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 28px; }
+.hero-points { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 22px; padding: 0; margin: 0; color: var(--text-2); font-size: 0.92rem; }
+.hero-points li::before { content: "✓"; color: var(--ok); font-weight: 700; margin-right: 8px; }
+
+.hero-visual { position: relative; aspect-ratio: 1 / 0.9; display: grid; place-items: center; }
+.hero-visual::before {
+  content: ""; position: absolute; inset: 8%; border-radius: 32px;
+  background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow);
+  transform: rotate(-4deg);
+}
+.hero-visual::after {
+  content: ""; position: absolute; inset: 8%; border-radius: 32px;
+  border: 1px dashed var(--border-strong); transform: rotate(4deg);
+}
+.hero-logo { position: relative; z-index: 2; width: 78%; }
+.hero-logo .ss-logo { width: 100%; height: auto; }
+.float-card {
+  position: absolute; z-index: 3; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 16px; padding: 12px 16px; box-shadow: var(--shadow); font-size: 0.85rem;
+  animation: floaty 6s ease-in-out infinite;
+}
+.float-card small { display: block; color: var(--text-3); font-size: 0.75rem; }
+.fc-row { display: flex; align-items: center; gap: 10px; }
+.fc-1 { top: 2%; left: 0; }
+.fc-2 { bottom: 6%; left: 4%; animation-delay: -2s; width: 150px; }
+.fc-3 { top: 14%; right: -2%; animation-delay: -4s; }
+.dot { width: 9px; height: 9px; border-radius: 50%; }
+.dot.ok { background: var(--ok); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 25%, transparent); }
+.spark { display: flex; align-items: flex-end; gap: 5px; height: 42px; margin-top: 8px; }
+.spark i { flex: 1; border-radius: 4px; background: var(--grad); }
+.pay-ico { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-weight: 700; font-size: 0.72rem; color: #fff; background: var(--grad-hot); }
+@keyframes floaty { 50% { transform: translateY(-10px); } }
+
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-visual { max-width: 480px; width: 100%; margin: 0 auto; }
+}
+@media (max-width: 480px) {
+  .fc-3 { right: 0; }
+  .float-card { padding: 9px 12px; }
+}
+
+/* ---------- Marquee ---------- */
+.marquee { border-block: 1px solid var(--border); background: var(--bg-2); overflow: hidden; padding: 18px 0; }
+.marquee-track { display: flex; gap: 56px; width: max-content; animation: marquee 32s linear infinite; }
+.marquee-track span { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; color: var(--text-3); white-space: nowrap; }
+.marquee-track span::before { content: "✦"; margin-right: 56px; color: var(--accent); opacity: 0.6; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ---------- Secciones ---------- */
+.section-alt { background: var(--bg-2); border-block: 1px solid var(--border); }
+.section-tight { padding-top: 0; }
+.svc h3 { margin-bottom: 8px; }
+.svc p { margin: 0; font-size: 0.95rem; }
+
+/* ---------- Bento productos ---------- */
+.bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.bento .card { overflow: hidden; display: flex; flex-direction: column; }
+.prod-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.prod-top .icon-badge { margin: 0; }
+.prod-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 12px; }
+.bento .card::after {
+  content: ""; position: absolute; width: 220px; height: 220px; right: -80px; bottom: -110px; border-radius: 50%;
+  background: var(--grad); opacity: 0.08; filter: blur(10px); transition: opacity .3s;
+}
+.bento .card:hover::after { opacity: 0.2; }
+@media (max-width: 900px) {
+  .bento { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) { .bento { grid-template-columns: 1fr; } }
+
+/* ---------- Pasos ---------- */
+.steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; counter-reset: step; position: relative; }
+.steps li { position: relative; padding: 28px 24px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); }
+.steps li::before {
+  counter-increment: step; content: "0" counter(step);
+  font-family: var(--font-mono); font-weight: 700; font-size: 0.9rem;
+  display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 12px;
+  color: #fff; background: var(--grad); margin-bottom: 16px; box-shadow: var(--glow);
+}
+.steps h3 { margin-bottom: 6px; }
+.steps p { margin: 0; font-size: 0.93rem; }
+@media (max-width: 900px) { .steps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
+
+/* ---------- CTA ---------- */
+.cta-banner {
+  position: relative; overflow: hidden; border-radius: 28px; padding: clamp(32px, 6vw, 64px);
+  background: #0b0f24; color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  border: 1px solid rgba(255,255,255,.08);
+}
+.cta-banner .bg-orbs span { opacity: 0.6 !important; }
+.cta-copy { position: relative; z-index: 1; max-width: 560px; }
+.cta-copy h2 { color: #fff; }
+.cta-copy p { color: rgba(255,255,255,.72); margin: 0; }
+.cta-banner .btn { position: relative; z-index: 1; }
+
+/* ---------- Contacto ---------- */
+.contact { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.contact-list { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 12px; }
+.contact-list a { display: inline-flex; align-items: center; gap: 12px; font-weight: 500; }
+.contact-list .icon-badge { width: 40px; height: 40px; margin: 0; border-radius: 12px; }
+.contact-form { display: grid; gap: 16px; }
+.contact-form label { display: grid; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--text-2); }
+.contact-form input, .contact-form select, .contact-form textarea {
+  font: inherit; color: var(--text); background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 12px; padding: 12px 14px; outline: none; transition: border-color .2s, box-shadow .2s; width: 100%;
+}
+.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
+  border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+.form-note { color: var(--text-3); text-align: center; }
+@media (max-width: 860px) { .contact { grid-template-columns: 1fr; } }
