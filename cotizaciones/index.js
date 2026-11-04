@@ -15,6 +15,18 @@ const COTIZACIONES = [
     tags: ["Pagos QR", "Tiempo real", "iOS · Android"],
     fecha: "2026-11-04",
   },
+  {
+    slug: "adelantos",
+    codigo: "COT-2026-002",
+    titulo: "Sistema de Adelantos",
+    resumen: "Crédito para pedidos de clientes Renova: apps para cliente, captador y cobrador, cobranza digital y simulador del piloto.",
+    tipo: "Fintech",
+    estado: "En revisión",
+    emoji: "💸",
+    cover: "linear-gradient(135deg,#0ea5e9 0%,#5b4bff 55%,#10b981 100%)",
+    tags: ["Cobranza digital", "Comisiones", "Integración Renova"],
+    fecha: "2026-11-04",
+  },
 ];
 
 const list = document.getElementById("qList");

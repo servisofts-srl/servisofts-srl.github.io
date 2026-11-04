@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Sistema de Adelantos · Servisofts</title>
+  <meta name="description" content="Cotización COT-2026-002: plataforma de adelantos para pedidos con captadores, cobranza digital y simulador del piloto.">
+  <meta name="theme-color" content="#070912">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/cotizacion.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header data-nav></header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="s-hero">
+      <div class="bg-orbs"><span></span><span></span><span></span></div>
+      <div class="bg-grid"></div>
+      <div class="container s-hero-inner">
+        <div>
+          <a class="back" href="../">← Cotizaciones</a>
+          <span class="eyebrow">COT-2026-002 · Fintech · Web + móvil</span>
+          <h1>Sistema de <span class="grad-text">Adelantos</span></h1>
+          <p class="lead">Crédito para pedidos de clientes Renova, operado por una empresa independiente. Renova cobra siempre al contado; la plataforma gestiona captación, líneas de crédito y cobranza digital.</p>
+          <div class="hero-cta">
+            <a href="#simulador" class="btn btn-primary">Simular el piloto</a>
+            <a href="#demo" class="btn">Ver la app</a>
+          </div>
+          <div class="kpis">
+            <div><b id="kClientes">100</b><span>clientes piloto</span></div>
+            <div><b id="kLinea">Bs 300</b><span>línea por cliente</span></div>
+            <div><b id="kTasa">3%</b><span>comisión por ciclo</span></div>
+          </div>
+        </div>
+
+        <div class="money-flow" aria-hidden="true">
+          <div class="mf-node mf-x"><span>🏦</span><b>Empresa X</b><small>Capital operativo</small></div>
+          <div class="mf-node mf-r"><span>🛍️</span><b>Renova</b><small>Cobra al contado</small></div>
+          <div class="mf-node mf-c"><span>👩</span><b>Cliente</b><small>Recibe su pedido</small></div>
+          <svg class="mf-lines" viewBox="0 0 400 320" preserveAspectRatio="none">
+            <path d="M120 70 C 220 40, 260 40, 300 80" />
+            <path d="M300 150 C 300 210, 260 250, 210 255" />
+            <path d="M120 255 C 60 220, 50 150, 80 110" />
+          </svg>
+          <span class="mf-tag t1" id="mfPay">paga Bs 300</span>
+          <span class="mf-tag t2">entrega pedido</span>
+          <span class="mf-tag t3" id="mfBack">devuelve Bs 309</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MODELO ============ -->
+    <section class="section" id="modelo">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">El modelo</span>
+          <h2>Cómo fluye <span class="grad-text">un adelanto</span></h2>
+          <p class="lead">El negocio es la rotación, no la mora: montos bajos, ciclos cortos y cobranza automática.</p>
+        </div>
+        <div class="flow reveal" id="flowList"></div>
+      </div>
+    </section>
+
+    <!-- ============ ACTORES ============ -->
+    <section class="section section-alt" id="actores">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Usuarios del sistema</span>
+          <h2>Una app para <span class="grad-text">cada rol</span></h2>
+          <p class="lead">El vendedor tradicional se reemplaza por captadores y capacitadores; la cobranza es digital y la visita física, la excepción.</p>
+        </div>
+        <div class="grid grid-3" id="rolesGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ DEMO ============ -->
+    <section class="section" id="demo">
+      <div class="container demo-wrap">
+        <div class="demo-copy reveal">
+          <span class="eyebrow">Demo interactiva</span>
+          <h2>La app <span class="grad-text">en acción</span></h2>
+          <p class="lead">Cambia de rol y prueba el flujo completo. Los datos son de ejemplo y se reinician al recargar.</p>
+          <div class="role-switch" id="roleSwitch" role="tablist" aria-label="Rol de la demo">
+            <button role="tab" data-role="cliente" class="on">👩 Cliente</button>
+            <button role="tab" data-role="captador">🧭 Captador</button>
+            <button role="tab" data-role="cobrador">📲 Cobrador</button>
+          </div>
+          <ul class="checks role-notes" id="roleNotes"></ul>
+        </div>
+        <div class="phone reveal">
+          <div class="phone-notch"></div>
+          <div class="app" id="app" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SIMULADOR ============ -->
+    <section class="section section-alt" id="simulador">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Simulador del piloto</span>
+          <h2>¿Cuánto rinde <span class="grad-text">el modelo?</span></h2>
+          <p class="lead">Ajusta los supuestos y compara escenarios. Valores antes de costos operativos e impuestos.</p>
+        </div>
+        <div class="sim reveal">
+          <form class="card sim-inputs" id="simForm" onsubmit="return false">
+            <div class="range"><label for="sClientes">Clientes <output id="oClientes"></output></label><input type="range" id="sClientes" min="50" max="1000" step="50" value="100"></div>
+            <div class="range"><label for="sLinea">Línea por cliente <output id="oLinea"></output></label><input type="range" id="sLinea" min="100" max="1000" step="50" value="300"></div>
+            <div class="range"><label for="sTasa">Comisión por ciclo <output id="oTasa"></output></label><input type="range" id="sTasa" min="1" max="6" step="0.5" value="3"></div>
+            <div class="range"><label>Frecuencia del ciclo</label>
+              <div class="seg-p" id="sFreq"><button type="button" data-v="4">Semanal</button><button type="button" data-v="2" class="on">Quincenal</button><button type="button" data-v="1">Mensual</button></div></div>
+            <div class="range"><label for="sUso">Uso de la línea <output id="oUso"></output></label><input type="range" id="sUso" min="30" max="100" step="5" value="80"></div>
+            <div class="range"><label for="sMora">Mora del capital <output id="oMora"></output></label><input type="range" id="sMora" min="0" max="20" step="1" value="7"></div>
+            <div class="range"><label for="sRec">Recuperación de la mora <output id="oRec"></output></label><input type="range" id="sRec" min="0" max="90" step="5" value="50"></div>
+            <div class="range"><label for="sCob">Comisión del cobrador <output id="oCob"></output></label><input type="range" id="sCob" min="0" max="30" step="1" value="10"></div>
+            <div class="range"><label for="sMeses">Duración del piloto <output id="oMeses"></output></label><input type="range" id="sMeses" min="1" max="12" step="1" value="3"></div>
+          </form>
+          <div class="sim-out">
+            <div class="sim-cards">
+              <div class="card sc"><small>Capital inicial</small><b id="rCapital"></b><span id="rCapitalNote"></span></div>
+              <div class="card sc"><small>Comisiones por mes</small><b id="rMes"></b><span id="rMesNote"></span></div>
+              <div class="card sc"><small>Pérdida por mora</small><b id="rPerdida" class="neg"></b><span id="rPerdidaNote"></span></div>
+              <div class="card sc hl"><small>Resultado del piloto</small><b id="rNeto"></b><span id="rNetoNote"></span></div>
+            </div>
+            <div class="card sim-bar">
+              <div class="sb-head"><b>Mora máxima tolerable</b><span id="rBreak"></span></div>
+              <div class="sb-track"><i id="rBreakBar"></i><em id="rMoraMark"></em></div>
+              <small id="rBreakNote"></small>
+            </div>
+            <div class="card sim-table-wrap">
+              <table class="invest-table sim-table">
+                <thead><tr><th>Escala</th><th class="num">Capital</th><th class="num">Comisiones / mes</th><th class="num">Resultado del periodo</th></tr></thead>
+                <tbody id="scaleBody"></tbody>
+              </table>
+            </div>
+            <p class="sim-note" id="rCosto"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ALCANCE ============ -->
+    <section class="section" id="funciones">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Alcance</span>
+          <h2>Qué incluye <span class="grad-text">el proyecto</span></h2>
+        </div>
+        <div class="grid grid-3" id="featGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ ARQUITECTURA ============ -->
+    <section class="section section-alt" id="arquitectura">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Tecnología</span>
+          <h2>Arquitectura <span class="grad-text">propuesta</span></h2>
+          <p class="lead">La empresa X opera su propia plataforma y base de datos; con Renova solo intercambia datos por API.</p>
+        </div>
+        <div class="arch reveal">
+          <div class="arch-col">
+            <div class="arch-node"><span>👩</span><div><b>App cliente</b><small>Línea, adelantos, pagos QR</small></div></div>
+            <div class="arch-node"><span>🧭</span><div><b>App captador</b><small>Registro y evaluación en campo</small></div></div>
+            <div class="arch-node"><span>📲</span><div><b>App cobrador</b><small>Cartera, gestiones, GPS</small></div></div>
+          </div>
+          <div class="arch-link"><i></i><small>HTTPS · API</small></div>
+          <div class="arch-col">
+            <div class="arch-node core"><span>⚙️</span><div><b>Plataforma Empresa X</b><small>Líneas, ciclos, comisiones, scoring y cobranza</small></div></div>
+            <div class="arch-node"><span>🗄️</span><div><b>Base de datos propia</b><small>Separada de Renova · auditoría</small></div></div>
+          </div>
+          <div class="arch-link"><i></i><small>API · Webhooks</small></div>
+          <div class="arch-col">
+            <div class="arch-node"><span>🛍️</span><div><b>Renova</b><small>Historial de compras · pago de pedidos</small></div></div>
+            <div class="arch-node"><span>💬</span><div><b>WhatsApp / SMS / Push</b><small>Recordatorios automáticos</small></div></div>
+            <div class="arch-node"><span>📱</span><div><b>Pagos QR y transferencia</b><small>Conciliación automática</small></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CRONOGRAMA ============ -->
+    <section class="section" id="cronograma">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Cronograma</span>
+          <h2>Piloto listo en <span class="grad-text" id="totalWeeks">12 semanas</span></h2>
+          <p class="lead">Las últimas semanas operan el piloto con los primeros 100 clientes, con soporte directo del equipo.</p>
+        </div>
+        <div class="timeline reveal" id="timeline"></div>
+      </div>
+    </section>
+
+    <!-- ============ INVERSIÓN ============ -->
+    <section class="section section-alt" id="inversion">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Inversión</span>
+          <h2>Detalle <span class="grad-text">por módulo</span></h2>
+        </div>
+        <div class="invest reveal">
+          <div class="card invest-table-wrap">
+            <table class="invest-table">
+              <thead><tr><th>Módulo</th><th class="num">Horas</th><th class="num">Subtotal</th></tr></thead>
+              <tbody id="investBody"></tbody>
+              <tfoot><tr><td>Total</td><td class="num" id="investHours"></td><td class="num" id="investTotal"></td></tr></tfoot>
+            </table>
+          </div>
+          <aside class="invest-side">
+            <div class="card total-card">
+              <small>Inversión total</small>
+              <b id="investBig"></b>
+              <span id="investNote"></span>
+              <a class="btn btn-primary btn-block" href="../../#contacto">Aceptar propuesta</a>
+            </div>
+            <div class="card">
+              <h3>Forma de pago</h3>
+              <ul class="checks"><li>40% al iniciar</li><li>30% al entregar la versión de prueba</li><li>30% al iniciar el piloto</li></ul>
+            </div>
+            <div class="card">
+              <h3>No incluye</h3>
+              <ul class="checks muted-list">
+                <li>Capital del piloto para los adelantos</li>
+                <li>Asesoría legal y constitución de la empresa X</li>
+                <li>Mensajería WhatsApp/SMS, servidor y comisiones de pago</li>
+                <li>Cuentas de desarrollador Apple (USD 99/año) y Google Play (USD 25 único)</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LEGAL Y PRÓXIMOS PASOS ============ -->
+    <section class="section" id="pasos">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Antes de construir</span>
+          <h2>Marco legal y <span class="grad-text">próximos pasos</span></h2>
+        </div>
+        <div class="grid grid-2">
+          <div class="card reveal">
+            <div class="icon-badge">⚖️</div>
+            <h3>Puntos a validar con el área legal</h3>
+            <ul class="checks">
+              <li>Si la empresa X debe operar como empresa de cobranza o como entidad financiera regulada.</li>
+              <li>Separación jurídica y patrimonial de Renova para aislar el riesgo.</li>
+              <li>Cómo se clasifica la comisión por ciclo y su costo anual equivalente (lo calcula el simulador).</li>
+              <li>Contrato y textos que verá el cliente: mostrar siempre el monto total a devolver antes de aceptar.</li>
+              <li>Protección de datos al compartir el historial entre Renova y la empresa X.</li>
+            </ul>
+            <p class="muted" style="margin-top:14px;font-size:.88rem">El sistema permite configurar nombres, tasas y textos sin programar, para ajustarse a lo que defina la revisión legal.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon-badge">🚀</div>
+            <h3>Próximos pasos</h3>
+            <ol class="next-steps">
+              <li><b>Definir la estructura legal</b><span>Tipo de empresa y cómo se aísla de Renova.</span></li>
+              <li><b>Aprobar esta propuesta</b><span>Cerrar alcance, reglas del modelo y cronograma.</span></li>
+              <li><b>Seleccionar los 100 clientes piloto</b><span>Clientes top de Renova con mayor volumen y buen historial de pago.</span></li>
+              <li><b>Escalar por etapas</b><span>100 → 200 → 500 → 1.000 clientes cuando se valide el piloto.</span></li>
+            </ol>
+          </div>
+        </div>
+        <p class="legal reveal">Validez de la propuesta: 30 días. Esta cotización cubre el desarrollo de software; no constituye asesoría legal ni financiera.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer data-footer></footer>
+
+  <script src="../../assets/js/brand.js" data-root="../../" data-active="cotizaciones"></script>
+  <script src="index.js"></script>
+</body>
+</html>
