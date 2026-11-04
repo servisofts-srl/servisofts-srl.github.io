@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>App de Sorteo y Rifa · Servisofts</title>
-  <meta name="description" content="Cotización COT-2026-001: app web y móvil de rifas con coins, pagos por tarjeta y QR, y sorteo en vivo.">
+  <title>Plataforma de Rifas, Sorteos y Raspaditas · Servisofts</title>
+  <meta name="description" content="Cotización COT-2026-001: aplicaciones Android e iOS, billetera digital, panel web y Risk Management Engine para rifas, sorteos y raspaditas en Bolivia.">
   <meta name="theme-color" content="#070912">
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../../assets/css/base.css">
-  <link rel="stylesheet" href="../../assets/css/cotizacion.css">
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -22,30 +21,20 @@
       <div class="container s-hero-inner">
         <div>
           <a class="back" href="../">← Cotizaciones</a>
-          <span class="eyebrow">COT-2026-001 · Web + móvil</span>
-          <h1>App de <span class="grad-text">Sorteo y Rifa</span></h1>
-          <p class="lead">Usuarios con perfil y billetera de coins, recarga con tarjeta o QR, rifa de <b id="hTotal">600</b> tickets y un sorteo en vivo animado que todos ven al mismo tiempo.</p>
+          <span class="eyebrow">COT-2026-001 · Noviembre 2026</span>
+          <h1>Plataforma de <span class="grad-text">rifas, sorteos y raspaditas</span></h1>
+          <p class="lead">Aplicaciones Android e iOS, billetera digital y panel web con motor de gestión de riesgos, en un único ecosistema desarrollado a medida para el mercado boliviano.</p>
           <div class="hero-cta">
             <a href="#demo" class="btn btn-primary">Probar la demo</a>
             <a href="#inversion" class="btn">Ver inversión</a>
           </div>
           <div class="kpis">
-            <div><b id="hTickets">600</b><span>tickets por rifa</span></div>
-            <div><b>2</b><span>métodos de pago</span></div>
-            <div><b>3</b><span>plataformas</span></div>
+            <div><b id="kTotal"></b><span>inversión total</span></div>
+            <div><b>9 meses</b><span>de desarrollo</span></div>
+            <div><b id="kMant"></b><span>mantenimiento mensual</span></div>
           </div>
         </div>
-        <div class="ticket-hero" aria-hidden="true">
-          <div class="ticket">
-            <div class="ticket-l">
-              <small>RIFA OFICIAL</small>
-              <b id="heroPrize">Moto 0 km</b>
-              <span class="mono">N.º 347</span>
-            </div>
-            <div class="ticket-r"><span class="mono">1.000</span><small>coins</small></div>
-          </div>
-          <div class="ticket t2"><div class="ticket-l"><small>RIFA OFICIAL</small><b>Sorteo en vivo</b><span class="mono">N.º 082</span></div><div class="ticket-r"><span class="mono">🎉</span></div></div>
-        </div>
+        <div class="hero-phones" id="heroPhones" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -55,22 +44,22 @@
         <div class="demo-copy reveal">
           <span class="eyebrow">Demo interactiva</span>
           <h2>Pruébala <span class="grad-text">como usuario</span></h2>
-          <p class="lead">Esta es la experiencia que tendrán tus clientes en la web y en el celular.</p>
+          <p class="lead">Una vista previa navegable de la app SorteoYa, tal como la usarían tus clientes en el celular.</p>
           <ol class="demo-steps">
-            <li><b>Crea tu cuenta</b> con nombre, correo y contraseña.</li>
-            <li><b>Compra coins</b> con tarjeta o escaneando un QR.</li>
-            <li><b>Elige tus números</b> de los 600 tickets disponibles.</li>
-            <li><b>Mira el sorteo en vivo</b> cuando se venden todos.</li>
+            <li><span><b>Ingresa</b> con cualquier dato o con un botón social.</span></li>
+            <li><span><b>Carga saldo</b> en tu billetera con QR o tarjeta.</span></li>
+            <li><span><b>Compra tickets</b> de la Gran Rifa y elige tus números.</span></li>
+            <li><span><b>Raspa una tarjeta</b> con el dedo o el mouse y reclama tu premio.</span></li>
           </ol>
           <div class="demo-tools card">
             <h3>Controles de la demo</h3>
-            <p>Para ver el sorteo sin vender 600 tickets, llena los restantes con compradores de prueba. Abre esta página en otra pestaña con otro usuario y verás el sorteo sincronizado.</p>
+            <p>Para ver el sorteo sin esperar, vende los tickets restantes y se ejecutará al instante.</p>
             <div class="tool-btns">
-              <button class="btn btn-sm btn-hot" id="toolFill">⚡ Vender tickets restantes</button>
-              <button class="btn btn-sm" id="toolTab">↗ Abrir otra pestaña</button>
-              <button class="btn btn-sm btn-ghost" id="toolReset">↺ Reiniciar demo</button>
+              <button class="btn btn-sm btn-hot" id="toolFill">Vender restantes y sortear</button>
+              <button class="btn btn-sm" id="toolTheme" aria-pressed="false">Ver versión oscura</button>
+              <button class="btn btn-sm btn-ghost" id="toolReset">Reiniciar demo</button>
             </div>
-            <small class="muted">Demo local: los datos se guardan solo en este navegador y los pagos son simulados.</small>
+            <small class="muted">Demo local: los datos quedan solo en este navegador, los pagos son simulados y no se solicitan datos de tarjeta. Premios, precios y probabilidades son de ejemplo.</small>
           </div>
         </div>
 
@@ -81,7 +70,39 @@
       </div>
     </section>
 
-    <!-- ============ FUNCIONALIDADES ============ -->
+    <!-- ============ PANTALLAS ============ -->
+    <section class="section section-alt" id="pantallas">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Experiencia</span>
+          <h2>Las pantallas <span class="grad-text">de la app</span></h2>
+          <p class="lead">En versión clara y oscura. Toca cualquiera para abrirla en la demo con datos de ejemplo.</p>
+        </div>
+        <h3 class="gallery-title reveal">Versión clara</h3>
+      </div>
+      <div class="gallery reveal" id="gallery" tabindex="0" aria-label="Pantallas en versión clara"></div>
+      <div class="container">
+        <h3 class="gallery-title reveal">Versión oscura</h3>
+      </div>
+      <div class="gallery reveal" id="galleryDark" tabindex="0" aria-label="Pantallas en versión oscura"></div>
+    </section>
+
+    <!-- ============ OBJETIVOS ============ -->
+    <section class="section" id="objetivos">
+      <div class="container goals">
+        <div class="reveal">
+          <span class="eyebrow">Objetivo general</span>
+          <h2>Una sola plataforma para <span class="grad-text">toda la operación</span></h2>
+          <p class="lead">Gestionar rifas, sorteos y raspaditas automatizando las operaciones de participación, pagos, premios y administración financiera.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Objetivos específicos</h3>
+          <ul class="checks" id="goalList"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ALCANCE ============ -->
     <section class="section section-alt" id="funciones">
       <div class="container">
         <div class="section-head reveal">
@@ -92,97 +113,177 @@
       </div>
     </section>
 
-    <!-- ============ FLUJO DEL SORTEO ============ -->
-    <section class="section" id="flujo">
+    <!-- ============ RASPADITAS ============ -->
+    <section class="section" id="raspaditas">
       <div class="container">
-        <div class="section-head center reveal">
-          <span class="eyebrow">Sorteo transparente</span>
-          <h2>Un resultado que <span class="grad-text">nadie puede manipular</span></h2>
-          <p class="lead">Al abrir la rifa se publica la huella (hash) de una semilla secreta. Al cerrar, se revela la semilla y cualquiera puede comprobar el número ganador.</p>
+        <div class="section-head reveal">
+          <span class="eyebrow">Sistema de raspaditas</span>
+          <h2>Siete modalidades <span class="grad-text">de juego</span></h2>
+          <p class="lead">Cada modalidad se configura por separado desde el panel administrativo. La demo incluye “Tres símbolos iguales” para que la pruebes.</p>
         </div>
-        <div class="flow reveal" id="flowList"></div>
+        <div class="modes reveal" id="modeGrid"></div>
+        <div class="card config reveal">
+          <h3>Configuraciones administrativas</h3>
+          <ul class="checks cols" id="scratchConfig"></ul>
+          <button class="btn btn-sm btn-primary" id="tryScratch">Probar una raspadita</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RISK MANAGEMENT ============ -->
+    <section class="section section-alt" id="riesgo">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Risk Management Engine</span>
+          <h2>Control del <span class="grad-text">riesgo financiero</span></h2>
+          <p class="lead">Permite establecer límites económicos, distribuir presupuestos, controlar obligaciones de premios y supervisar las operaciones de la plataforma.</p>
+        </div>
+        <div class="risk reveal">
+          <div class="risk-side">
+            <div class="card">
+              <h3>Módulos incluidos</h3>
+              <div class="risk-mods" id="riskMods"></div>
+            </div>
+            <div class="card">
+              <h3>Reglas configurables</h3>
+              <ul class="checks" id="riskRules"></ul>
+            </div>
+          </div>
+          <div class="card risk-panel">
+            <div class="risk-panel-top"><h3>Panel de riesgo</h3><span class="chip">Vista ilustrativa</span></div>
+            <p class="risk-note">Ejemplo con cifras ficticias de cómo se vería el control de presupuestos y exposición.</p>
+            <div id="riskMeters"></div>
+            <div class="risk-alert"><b>Alerta automática:</b> “Raspadita Cofres del tesoro” alcanzó su presupuesto. Nuevas participaciones bloqueadas.</div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ============ ARQUITECTURA ============ -->
-    <section class="section section-alt" id="arquitectura">
+    <section class="section" id="arquitectura">
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Tecnología</span>
-          <h2>Arquitectura <span class="grad-text">propuesta</span></h2>
-          <p class="lead">Una sola plataforma, tres canales: web, Android e iOS, conectados en tiempo real.</p>
+          <h2>Arquitectura <span class="grad-text">centralizada</span></h2>
+          <p class="lead">Con controles de acceso, cifrado, registros de auditoría y separación contable de los movimientos financieros.</p>
         </div>
         <div class="arch reveal">
           <div class="arch-col">
-            <div class="arch-node"><span>🌐</span><div><b>App web</b><small>React · responsive · PWA</small></div></div>
-            <div class="arch-node"><span>🤖</span><div><b>App Android</b><small>React Native · Google Play</small></div></div>
-            <div class="arch-node"><span>🍎</span><div><b>App iOS</b><small>React Native · App Store</small></div></div>
+            <div class="arch-node"><span>📱</span><div><b>App Android e iOS</b><small>Aplicación multiplataforma</small></div></div>
+            <div class="arch-node"><span>🖥️</span><div><b>Panel administrativo web</b><small>Operación comercial y financiera</small></div></div>
           </div>
-          <div class="arch-link"><i></i><small>HTTPS + WebSocket</small></div>
+          <div class="arch-link"><i></i><small>API</small></div>
           <div class="arch-col">
-            <div class="arch-node core"><span>⚙️</span><div><b>Servidor Servisofts</b><small>API REST · eventos en tiempo real · motor de sorteo</small></div></div>
-            <div class="arch-node"><span>🗄️</span><div><b>Base de datos</b><small>PostgreSQL · transacciones atómicas</small></div></div>
+            <div class="arch-node core"><span>⚙️</span><div><b>Backend y API central</b><small>Núcleo de la plataforma</small></div></div>
+            <div class="arch-node"><span>👛</span><div><b>Servicio de billetera digital</b><small>Saldos y movimientos</small></div></div>
+            <div class="arch-node"><span>🛡️</span><div><b>Motor de gestión de riesgos</b><small>Límites y presupuestos</small></div></div>
+            <div class="arch-node"><span>🎯</span><div><b>Motor de resultados y premios</b><small>Sorteos y raspaditas</small></div></div>
+            <div class="arch-node"><span>🗄️</span><div><b>Base de datos relacional</b><small>Registro transaccional</small></div></div>
           </div>
-          <div class="arch-link"><i></i><small>Webhooks</small></div>
+          <div class="arch-link"><i></i><small>Integraciones</small></div>
           <div class="arch-col">
-            <div class="arch-node"><span>💳</span><div><b>Pasarela de tarjeta</b><small>Visa · Mastercard</small></div></div>
-            <div class="arch-node"><span>📱</span><div><b>QR interbancario</b><small>Confirmación automática</small></div></div>
-            <div class="arch-node"><span>🛡️</span><div><b>Panel admin</b><small>Rifas, usuarios, reportes</small></div></div>
+            <div class="arch-node"><span>💳</span><div><b>Pasarela de pagos externa</b><small>QR y tarjetas</small></div></div>
+            <div class="arch-node"><span>🔔</span><div><b>Servicio de notificaciones</b><small>Avisos a usuarios</small></div></div>
+            <div class="arch-node"><span>☁️</span><div><b>Infraestructura en la nube</b><small>Despliegue escalable</small></div></div>
+            <div class="arch-node"><span>📈</span><div><b>Respaldos y monitoreo</b><small>Continuidad operativa</small></div></div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ============ CRONOGRAMA ============ -->
-    <section class="section" id="cronograma">
+    <section class="section section-alt" id="cronograma">
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Cronograma</span>
-          <h2>Entrega en <span class="grad-text" id="totalWeeks">13 semanas</span></h2>
-          <p class="lead">Avances semanales con versiones de prueba para que valides cada módulo.</p>
+          <h2>Duración estimada: <span class="grad-text">9 meses</span></h2>
+          <p class="lead">Nueve fases que se ejecutarán parcialmente en paralelo según la planificación técnica.</p>
         </div>
-        <div class="timeline reveal" id="timeline"></div>
+        <ol class="phases reveal" id="phaseList"></ol>
       </div>
     </section>
 
     <!-- ============ INVERSIÓN ============ -->
-    <section class="section section-alt" id="inversion">
+    <section class="section" id="inversion">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">Inversión</span>
-          <h2>Detalle <span class="grad-text">por módulo</span></h2>
+          <span class="eyebrow">Propuesta económica</span>
+          <h2>Inversión <span class="grad-text">por concepto</span></h2>
         </div>
         <div class="invest reveal">
-          <div class="card invest-table-wrap">
-            <table class="invest-table">
-              <thead><tr><th>Módulo</th><th class="num">Horas</th><th class="num">Subtotal</th></tr></thead>
-              <tbody id="investBody"></tbody>
-              <tfoot><tr><td>Total</td><td class="num" id="investHours"></td><td class="num" id="investTotal"></td></tr></tfoot>
-            </table>
+          <div class="invest-main">
+            <div class="card invest-table-wrap">
+              <table class="invest-table">
+                <thead><tr><th>Concepto</th><th class="num">USD</th></tr></thead>
+                <tbody id="investBody"></tbody>
+                <tfoot><tr><td>Inversión total</td><td class="num" id="investTotal"></td></tr></tfoot>
+              </table>
+            </div>
+            <div class="card">
+              <h3>Forma de pago por hitos</h3>
+              <div class="hitos" id="hitoList"></div>
+            </div>
           </div>
           <aside class="invest-side">
             <div class="card total-card">
               <small>Inversión total</small>
               <b id="investBig"></b>
-              <span id="investNote"></span>
+              <span id="investBs"></span>
+              <span>Tipo de cambio de referencia: Bs 12,09 por USD. El equivalente en bolivianos podrá actualizarse al momento de la contratación.</span>
               <a class="btn btn-primary btn-block" href="../../#contacto">Aceptar propuesta</a>
             </div>
             <div class="card">
-              <h3>Forma de pago</h3>
-              <ul class="checks"><li>40% al iniciar</li><li>30% al entregar la versión de prueba</li><li>30% al publicar en tiendas</li></ul>
-            </div>
-            <div class="card">
-              <h3>No incluye (costos de terceros)</h3>
-              <ul class="checks muted-list">
-                <li>Comisiones de la pasarela de pago y del QR</li>
-                <li>Cuenta de desarrollador Apple (USD 99/año) y Google Play (USD 25 único)</li>
-                <li>Servidor, dominio y certificados</li>
-                <li>Permisos legales para rifas y sorteos</li>
-              </ul>
+              <h3 id="mantTitle"></h3>
+              <p class="side-note">Servicio mensual posterior a la implementación. Incluye:</p>
+              <ul class="checks" id="mantList"></ul>
+              <p class="side-note warranty">Garantía correctiva de 90 días posteriores a la aceptación de la entrega final.</p>
             </div>
           </aside>
         </div>
-        <p class="legal reveal">Validez de la propuesta: 30 días. Las rifas y sorteos con fines comerciales pueden requerir autorización de la autoridad de juegos competente; recomendamos verificarlo antes del lanzamiento.</p>
+      </div>
+    </section>
+
+    <!-- ============ CONDICIONES ============ -->
+    <section class="section section-alt" id="condiciones">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Condiciones</span>
+          <h2>Entrega y <span class="grad-text">consideraciones</span></h2>
+        </div>
+        <div class="grid grid-3">
+          <div class="card reveal">
+            <h3>Propiedad y entrega</h3>
+            <p class="side-note">El contrato establecerá la titularidad y transferencia del código fuente, documentación, diseños, bases de datos y demás activos. Se entregará:</p>
+            <ul class="checks" id="entregaList"></ul>
+          </div>
+          <div class="card reveal">
+            <h3>Costos externos no incluidos</h3>
+            <p class="side-note">No forman parte de la inversión de desarrollo:</p>
+            <ul class="checks muted-list" id="externosList"></ul>
+          </div>
+          <div class="card legal-card reveal">
+            <h3>Marco legal y regulatorio</h3>
+            <p>La implementación comercial estará sujeta a la revisión y cumplimiento de la normativa boliviana aplicable a juegos de azar, loterías, sorteos y raspaditas.</p>
+            <p>Se deberá determinar ante la Autoridad de Fiscalización del Juego (AJ) la clasificación y autorización correspondiente para cada modalidad.</p>
+            <p>La puesta en producción comercial quedará condicionada a las autorizaciones, certificaciones y validaciones requeridas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CIERRE ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="closing reveal">
+          <h2>Una plataforma escalable, segura y lista para evolucionar</h2>
+          <p>Un ecosistema que unifica rifas, sorteos y raspaditas con billetera digital y administración financiera centralizada, preparado para crecer con las necesidades del negocio.</p>
+          <dl class="closing-kpis">
+            <div><dt>Inversión total</dt><dd id="cTotal"></dd></div>
+            <div><dt>Plazo de desarrollo</dt><dd>9 meses</dd></div>
+            <div><dt>Mantenimiento</dt><dd id="cMant"></dd></div>
+          </dl>
+          <a class="btn closing-btn" href="../../#contacto">Hablemos de tu proyecto</a>
+        </div>
       </div>
     </section>
   </main>

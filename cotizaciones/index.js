@@ -6,13 +6,13 @@ const COTIZACIONES = [
   {
     slug: "sorteo",
     codigo: "COT-2026-001",
-    titulo: "App de Sorteo y Rifa",
-    resumen: "App web y móvil con registro de usuarios, billetera de coins (tarjeta y QR), rifa de 600 tickets y sorteo en vivo animado.",
-    tipo: "Web + móvil",
+    titulo: "Plataforma de Rifas, Sorteos y Raspaditas",
+    resumen: "Apps Android e iOS, billetera digital con QR y tarjetas, siete modalidades de raspaditas, panel web y Risk Management Engine.",
+    tipo: "Android + iOS + Web",
     estado: "En revisión",
     emoji: "🎟️",
-    cover: "linear-gradient(135deg,#ff4d8d 0%,#7c3aed 55%,#22d3ee 100%)",
-    tags: ["Pagos QR", "Tiempo real", "iOS · Android"],
+    cover: "linear-gradient(135deg,#4a0e99 0%,#8a1fd6 55%,#c026d3 100%)",
+    tags: ["Billetera digital", "Raspaditas", "Risk Management"],
     fecha: "2026-11-04",
   },
   {

@@ -87,7 +87,7 @@
           <div><h4>Empresa</h4>
             <a href="${ROOT}#servicios">Servicios</a><a href="${ROOT}#productos">Productos</a><a href="${ROOT}#proceso">Proceso</a></div>
           <div><h4>Clientes</h4>
-            <a href="${ROOT}cotizaciones/">Cotizaciones</a><a href="${ROOT}cotizaciones/sorteo/">App de Sorteo y Rifa</a><a href="https://servisofts.com" target="_blank" rel="noopener">servisofts.com</a></div>
+            <a href="${ROOT}cotizaciones/">Cotizaciones</a><a href="${ROOT}cotizaciones/sorteo/">Plataforma de Rifas y Sorteos</a><a href="https://servisofts.com" target="_blank" rel="noopener">servisofts.com</a></div>
         </div>
       </div>
       <div class="footer-bottom"><span>© ${new Date().getFullYear()} Servisofts S.R.L. Todos los derechos reservados.</span><span>Hecho con código y café ☕</span></div>
