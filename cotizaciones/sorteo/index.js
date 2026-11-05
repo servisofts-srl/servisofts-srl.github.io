@@ -7,7 +7,7 @@
 
 const PROPUESTA = {
   tipoCambio: 12.09,
-  mantenimiento: 1500,
+  mantenimiento: { sinServidores: 300, conServidores: 450 },
   objetivos: [
     "Implementar una aplicación móvil multiplataforma.",
     "Incorporar una billetera digital para los usuarios.",
@@ -48,16 +48,16 @@ const PROPUESTA = {
   ],
   fases: ["Análisis, arquitectura y diseño UX/UI", "Backend y seguridad", "Usuarios y billetera", "Aplicaciones móviles y pagos", "Rifas, sorteos y tickets", "Raspaditas digitales", "Risk Management y panel administrativo", "Integraciones y pruebas", "Implementación y capacitación"],
   conceptos: [
-    ["Análisis, arquitectura y UX/UI", 5500],
-    ["Backend, API y seguridad", 10000],
-    ["Aplicaciones Android e iOS", 14000],
-    ["Rifas y sorteos", 7000],
-    ["Motor de raspaditas", 9000],
-    ["Billetera e integración de pagos", 9000],
-    ["Risk Management Engine", 9000],
-    ["Panel administrativo y reportes", 6000],
-    ["QA, infraestructura y despliegue", 4000],
-    ["Gestión del proyecto y documentación", 2500],
+    ["Análisis, arquitectura y UX/UI", 900],
+    ["Backend, API y seguridad", 1600],
+    ["Aplicaciones Android e iOS", 2200],
+    ["Rifas y sorteos", 1100],
+    ["Motor de raspaditas", 1400],
+    ["Billetera e integración de pagos", 1400],
+    ["Risk Management Engine", 1400],
+    ["Panel administrativo y reportes", 950],
+    ["QA, infraestructura y despliegue", 650],
+    ["Gestión del proyecto y documentación", 400],
   ],
   hitos: [
     ["Inicio y firma de contrato", 20],
@@ -69,7 +69,7 @@ const PROPUESTA = {
   ],
   incluyeMantenimiento: ["Mantenimiento correctivo", "Actualizaciones de seguridad", "Monitoreo técnico", "Respaldo de información", "Corrección de errores", "Soporte técnico", "Mantenimiento de integraciones"],
   entrega: ["Aplicaciones móviles", "Panel administrativo", "Backend y API", "Código fuente según contrato", "Documentación técnica", "Manual administrativo", "Manual de usuario", "Capacitación para administradores"],
-  externos: ["Servidores y consumo de infraestructura", "Comisiones de pasarelas de pago", "Dominio y servicios externos", "Mensajería SMS", "Licencias y autorizaciones regulatorias", "Certificaciones técnicas externas", "Auditorías independientes", "Asesoramiento jurídico", "Capital destinado a premios", "Gastos de operación comercial"],
+  externos: ["Servidores y consumo de infraestructura (salvo en el mantenimiento con servidores)", "Comisiones de pasarelas de pago", "Dominio y servicios externos", "Mensajería SMS", "Licencias y autorizaciones regulatorias", "Certificaciones técnicas externas", "Auditorías independientes", "Asesoramiento jurídico", "Capital destinado a premios", "Gastos de operación comercial"],
 };
 
 const RIFA = {
@@ -124,9 +124,9 @@ async function sha256(text) {
   const lista = (sel, items) => { $(sel).innerHTML = items.map((x) => `<li>${x}</li>`).join(""); };
 
   $("#kTotal").textContent = usd(total);
-  $("#kMant").textContent = usd(P.mantenimiento);
+  $("#kMant").textContent = `Desde ${usd(P.mantenimiento.sinServidores)}`;
   $("#cTotal").textContent = usd(total);
-  $("#cMant").textContent = `${usd(P.mantenimiento)} mensuales`;
+  $("#cMant").textContent = `${usd(P.mantenimiento.sinServidores)} o ${usd(P.mantenimiento.conServidores)} con servidores`;
 
   lista("#goalList", P.objetivos);
   $("#featGrid").innerHTML = P.componentes.map(([e, t, l], i) => `
@@ -155,7 +155,7 @@ async function sha256(text) {
   $("#investBs").textContent = `Equivalencia referencial: ${bs(total * P.tipoCambio)}`;
   $("#hitoList").innerHTML = P.hitos.map(([t, p]) => `<div class="hito"><div class="hito-pct">${p}%</div><div class="hito-txt"><b>${t}</b><div class="hito-bar"><i style="width:${p * 5}%"></i></div></div><div class="hito-usd">${usd((total * p) / 100)}</div></div>`).join("");
 
-  $("#mantTitle").textContent = `Mantenimiento: ${usd(P.mantenimiento)} mensuales`;
+  $("#mantPlans").innerHTML = `<div><small>Sin servidores</small><b>${usd(P.mantenimiento.sinServidores)}</b></div><div><small>Con servidores</small><b>${usd(P.mantenimiento.conServidores)}</b></div>`;
   lista("#mantList", P.incluyeMantenimiento);
   lista("#entregaList", P.entrega);
   lista("#externosList", P.externos);
