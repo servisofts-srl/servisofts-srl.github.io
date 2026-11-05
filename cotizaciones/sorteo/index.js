@@ -47,26 +47,8 @@ const PROPUESTA = {
     ["Cofres del tesoro", 5000, 5000],
   ],
   fases: ["Análisis, arquitectura y diseño UX/UI", "Backend y seguridad", "Usuarios y billetera", "Aplicaciones móviles y pagos", "Rifas, sorteos y tickets", "Raspaditas digitales", "Risk Management y panel administrativo", "Integraciones y pruebas", "Implementación y capacitación"],
-  conceptos: [
-    ["Análisis, arquitectura y UX/UI", 900],
-    ["Backend, API y seguridad", 1600],
-    ["Aplicaciones Android e iOS", 2200],
-    ["Rifas y sorteos", 1100],
-    ["Motor de raspaditas", 1400],
-    ["Billetera e integración de pagos", 1400],
-    ["Risk Management Engine", 1400],
-    ["Panel administrativo y reportes", 950],
-    ["QA, infraestructura y despliegue", 650],
-    ["Gestión del proyecto y documentación", 400],
-  ],
-  hitos: [
-    ["Inicio y firma de contrato", 20],
-    ["Aprobación de arquitectura y diseño", 15],
-    ["Backend y módulos principales", 20],
-    ["Aplicaciones y billetera", 20],
-    ["Panel y Risk Management", 15],
-    ["Pruebas y entrega final", 10],
-  ],
+  pagos: ["1er mes", "2do mes", "3er mes", "4to mes", "5to mes", "6to mes"],
+  pagoMensual: 2000,
   incluyeMantenimiento: ["Mantenimiento correctivo", "Actualizaciones de seguridad", "Monitoreo técnico", "Respaldo de información", "Corrección de errores", "Soporte técnico", "Mantenimiento de integraciones"],
   entrega: ["Aplicaciones móviles", "Panel administrativo", "Backend y API", "Código fuente según contrato", "Documentación técnica", "Manual administrativo", "Manual de usuario", "Capacitación para administradores"],
   externos: ["Servidores y consumo de infraestructura (salvo en el mantenimiento con servidores)", "Comisiones de pasarelas de pago", "Dominio y servicios externos", "Mensajería SMS", "Licencias y autorizaciones regulatorias", "Certificaciones técnicas externas", "Auditorías independientes", "Asesoramiento jurídico", "Capital destinado a premios", "Gastos de operación comercial"],
@@ -120,7 +102,7 @@ async function sha256(text) {
 /* ---------------- secciones estáticas ---------------- */
 (function renderPropuesta() {
   const P = PROPUESTA;
-  const total = P.conceptos.reduce((a, c) => a + c[1], 0);
+  const total = P.pagos.length * P.pagoMensual;
   const lista = (sel, items) => { $(sel).innerHTML = items.map((x) => `<li>${x}</li>`).join(""); };
 
   $("#kTotal").textContent = usd(total);
@@ -149,11 +131,10 @@ async function sha256(text) {
 
   $("#phaseList").innerHTML = P.fases.map((f, i) => `<li><span>${i + 1}</span><b>${f}</b></li>`).join("");
 
-  $("#investBody").innerHTML = P.conceptos.map(([t, v]) => `<tr><td>${t}</td><td class="num">${fmt(v)}</td></tr>`).join("");
-  $("#investTotal").textContent = fmt(total);
+  $("#pagoList").innerHTML = P.pagos.map((m) => `<li class="pago"><b>${m}</b><span>Monto a pagar</span><strong>${usd(P.pagoMensual)}</strong></li>`).join("");
+  $("#investTotal").textContent = usd(total);
   $("#investBig").textContent = usd(total);
   $("#investBs").textContent = `Equivalencia referencial: ${bs(total * P.tipoCambio)}`;
-  $("#hitoList").innerHTML = P.hitos.map(([t, p]) => `<div class="hito"><div class="hito-pct">${p}%</div><div class="hito-txt"><b>${t}</b><div class="hito-bar"><i style="width:${p * 5}%"></i></div></div><div class="hito-usd">${usd((total * p) / 100)}</div></div>`).join("");
 
   $("#mantPlans").innerHTML = `<div><small>Sin servidores</small><b>${usd(P.mantenimiento.sinServidores)}</b></div><div><small>Con servidores</small><b>${usd(P.mantenimiento.conServidores)}</b></div>`;
   lista("#mantList", P.incluyeMantenimiento);
