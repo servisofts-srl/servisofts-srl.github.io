@@ -37,8 +37,7 @@ const PROPUESTA = {
     ["Cofres del tesoro", 5000, 5000],
   ],
   fases: ["Análisis, arquitectura y diseño UX/UI", "Backend y seguridad", "Usuarios y billetera", "Aplicaciones móviles y pagos", "Rifas, sorteos y tickets", "Raspaditas digitales", "Risk Management y panel administrativo", "Integraciones y pruebas", "Implementación y capacitación"],
-  pagos: ["1er mes", "2do mes", "3er mes", "4to mes", "5to mes", "6to mes"],
-  pagoMensual: 2000,
+  pagos: [["Mes 1", 3000], ["Mes 2", 2200], ["Mes 3", 2200], ["Mes 4", 2200], ["Mes 5", 2200], ["Mes 6", 2200]],
   incluyeMantenimiento: ["Mantenimiento correctivo", "Actualizaciones de seguridad", "Monitoreo técnico", "Respaldo de información", "Corrección de errores", "Soporte técnico", "Mantenimiento de integraciones"],
   entrega: ["Aplicaciones móviles", "Panel administrativo", "Backend y API", "Código fuente según contrato", "Documentación técnica", "Manual administrativo", "Manual de usuario", "Capacitación para administradores"],
   externos: ["Servidores y consumo de infraestructura (salvo en el mantenimiento con servidores)", "Comisiones de pasarelas de pago", "Dominio y servicios externos", "Mensajería SMS", "Licencias y autorizaciones regulatorias", "Certificaciones técnicas externas", "Auditorías independientes", "Asesoramiento jurídico", "Capital destinado a premios", "Gastos de operación comercial"],
@@ -92,7 +91,7 @@ async function sha256(text) {
 /* ---------------- secciones estáticas ---------------- */
 (function renderPropuesta() {
   const P = PROPUESTA;
-  const total = P.pagos.length * P.pagoMensual;
+  const total = P.pagos.reduce((a, p) => a + p[1], 0);
   const lista = (sel, items) => { $(sel).innerHTML = items.map((x) => `<li>${x}</li>`).join(""); };
 
   $("#kTotal").textContent = usd(total);
@@ -118,7 +117,7 @@ async function sha256(text) {
 
   $("#phaseList").innerHTML = P.fases.map((f, i) => `<li><span>${i + 1}</span><b>${f}</b></li>`).join("");
 
-  $("#pagoList").innerHTML = P.pagos.map((m) => `<li class="pago"><b>${m}</b><span>Monto a pagar</span><strong>${usd(P.pagoMensual)}</strong></li>`).join("");
+  $("#pagoList").innerHTML = P.pagos.map(([m, v]) => `<li class="pago"><b>${m}</b><span>Monto a pagar</span><strong>${usd(v)}</strong></li>`).join("");
   $("#investTotal").textContent = usd(total);
   $("#investBig").textContent = usd(total);
   $("#investBs").textContent = `Equivalencia referencial: ${bs(total * P.tipoCambio)}`;
