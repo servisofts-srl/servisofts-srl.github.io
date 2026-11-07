@@ -28,16 +28,6 @@ const PROPUESTA = {
     ["🖥️", "Panel administrativo web", ["Dashboard general", "Administración de usuarios", "Gestión de rifas y sorteos", "Gestión de raspaditas", "Administración de billeteras", "Gestión de pagos y retiros", "Gestión de ganadores", "Configuración de reglas de pago", "Gestión de presupuestos", "Risk Management Engine", "Reportes financieros", "Auditoría y seguridad", "Configuración general"]],
     ["📊", "Reportes y estadísticas", ["Ingresos por ventas", "Tickets vendidos", "Participaciones por juego", "Premios generados", "Premios pendientes", "Premios pagados", "Recargas y retiros", "Exposición financiera", "Presupuestos ejecutados", "Resultados por período", "Historial administrativo"]],
   ],
-  modalidades: [
-    ["🍀", "Tres símbolos iguales"],
-    ["🔢", "Encuentra los números ganadores"],
-    ["🎁", "Descubre el premio"],
-    ["⭐", "Encuentra el símbolo especial"],
-    ["🅱️", "Raspadita tipo bingo"],
-    ["💰", "Cofres del tesoro"],
-    ["🃏", "Cartas de la suerte"],
-  ],
-  configRaspaditas: ["Precio por jugada", "Cantidad de participaciones", "Presupuesto individual", "Inventario y distribución de premios", "Premios mínimos y máximos", "Probabilidades publicadas", "Resultados registrados", "Control de premios pendientes", "Pausa y finalización de campañas"],
   riesgoModulos: ["Risk Management", "Purchase Limits", "Payout Limits", "Exposure Limits", "Liability Management", "Player Limits", "Budget Management", "Fraud Management"],
   riesgoReglas: ["Presupuesto global semanal", "Presupuesto independiente por juego", "Límites de compra por usuario", "Límites de pago por premio", "Exposición financiera máxima", "Control de obligaciones pendientes", "Alertas automáticas", "Bloqueo de nuevas participaciones al alcanzar límites", "Historial de cambios y auditoría"],
   riesgoEjemplo: [
@@ -115,9 +105,6 @@ async function sha256(text) {
     <article class="card card-hover feat reveal" style="transition-delay:${i * 50}ms">
       <div class="icon-badge">${e}</div><h3>${t}</h3>
       <ul>${l.map((x) => `<li>${x}</li>`).join("")}</ul></article>`).join("");
-
-  $("#modeGrid").innerHTML = P.modalidades.map(([e, t], i) => `<div class="mode"><span>${e}</span><small>${i + 1}</small><b>${t}</b></div>`).join("");
-  lista("#scratchConfig", P.configRaspaditas);
 
   $("#riskMods").innerHTML = P.riesgoModulos.map((m) => `<span class="chip">${m}</span>`).join("");
   lista("#riskRules", P.riesgoReglas);
@@ -836,11 +823,6 @@ app.addEventListener("keydown", (e) => { if (e.key === "Enter" && e.target.id ==
 $("#toolFill").addEventListener("click", venderRestantesYSortear);
 $("#toolTheme").addEventListener("click", () => { aplicarTema(!oscuro); render(); });
 $("#toolReset").addEventListener("click", () => { if (confirm("¿Reiniciar la demo? Se borrarán tus tickets y movimientos de prueba.")) reiniciar(); });
-$("#tryScratch").addEventListener("click", () => {
-  if (!S.user) S.user = { name: "María", contacto: "maria@correo.com" };
-  guardar(); ir("scratch");
-  $("#demo").scrollIntoView({ behavior: "smooth", block: "start" });
-});
 
 /* ---------- inicio ---------- */
 aplicarTema(oscuro);
