@@ -27,6 +27,18 @@ const COTIZACIONES = [
     tags: ["Cobranza digital", "Comisiones", "Integración Renova"],
     fecha: "2026-11-04",
   },
+  {
+    slug: "raspaditas",
+    codigo: "COT-2026-003",
+    titulo: "Plataforma de Raspaditas Digitales y Físicas",
+    resumen: "Apps Android e iOS, plataforma web, cinco modalidades de raspaditas, tarjetas físicas con QR, app para vendedores y panel administrativo.",
+    tipo: "Android + iOS + Web",
+    estado: "En revisión",
+    emoji: "🎫",
+    cover: "linear-gradient(135deg,#3b0a8f 0%,#7c22d9 55%,#f5b301 100%)",
+    tags: ["Raspaditas físicas", "Códigos QR", "App de vendedores"],
+    fecha: "2026-11-11",
+  },
 ];
 
 const list = document.getElementById("qList");

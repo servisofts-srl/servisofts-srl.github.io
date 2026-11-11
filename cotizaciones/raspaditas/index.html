@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Plataforma de Raspaditas Digitales y Físicas · Servisofts</title>
+  <meta name="description" content="Cotización COT-2026-003: apps Android e iOS, plataforma web, cinco modalidades de raspaditas, tarjetas físicas con QR, app para vendedores y panel administrativo.">
+  <meta name="theme-color" content="#070912">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/cotizacion.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header data-nav></header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="s-hero">
+      <div class="bg-orbs"><span></span><span></span><span></span></div>
+      <div class="bg-grid"></div>
+      <div class="container s-hero-inner">
+        <div>
+          <a class="back" href="../">← Cotizaciones</a>
+          <span class="eyebrow">COT-2026-003 · Noviembre 2026</span>
+          <h1>Plataforma de <span class="grad-text">raspaditas digitales y físicas</span></h1>
+          <p class="lead">Aplicaciones Android e iOS, plataforma web, cinco modalidades de juego, tarjetas físicas con código QR y aplicación para vendedores, administradas desde un único ecosistema.</p>
+          <div class="hero-cta">
+            <a href="#demo" class="btn btn-primary">Probar la demo</a>
+            <a href="#inversion" class="btn">Ver inversión</a>
+          </div>
+          <div class="kpis">
+            <div><b id="kTotal"></b><span>inversión total</span></div>
+            <div><b id="kPlazo"></b><span>de desarrollo</span></div>
+            <div><b id="kMant"></b><span>mantenimiento mensual</span></div>
+          </div>
+        </div>
+        <div class="hero-cards" id="heroCards" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ============ DESCRIPCIÓN ============ -->
+    <section class="section section-alt" id="descripcion">
+      <div class="container goals">
+        <div class="reveal">
+          <span class="eyebrow">Descripción del proyecto</span>
+          <h2>Un solo sistema para <span class="grad-text">el canal digital y el físico</span></h2>
+          <p class="lead">Plataforma especializada en juegos de raspadita, con administración centralizada de participaciones, resultados, premios y puntos de venta.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Qué resuelve</h3>
+          <ul class="checks" id="descList"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DEMO ============ -->
+    <section class="section" id="demo">
+      <div class="container demo-wrap">
+        <div class="demo-copy reveal">
+          <span class="eyebrow">Demo interactiva</span>
+          <h2>Pruébala <span class="grad-text">como jugador</span></h2>
+          <p class="lead">Una vista previa navegable de la app Raspaditas, basada en la propuesta de pantallas.</p>
+          <ol class="demo-steps">
+            <li><span><b>Ingresa</b> con cualquier dato o con un botón social.</span></li>
+            <li><span><b>Elige una modalidad</b> en el catálogo y compra con tu billetera.</span></li>
+            <li><span><b>Raspa las casillas</b> con el dedo o el mouse.</span></li>
+            <li><span><b>Reclama tu premio</b> o valida una raspadita física con el botón QR.</span></li>
+          </ol>
+          <div class="demo-tools card">
+            <h3>Ir a una pantalla</h3>
+            <div class="tool-btns" id="jumpBtns"></div>
+            <div class="tool-btns">
+              <button class="btn btn-sm btn-ghost" id="toolReset">Reiniciar demo</button>
+            </div>
+            <small class="muted">Demo local: los datos quedan solo en este navegador y los pagos son simulados. Precios, premios y probabilidades son de ejemplo.</small>
+          </div>
+        </div>
+
+        <div class="phone reveal">
+          <div class="phone-notch"></div>
+          <div class="app rp" id="app" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MODALIDADES ============ -->
+    <section class="section section-alt" id="modalidades">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Modalidades de juego</span>
+          <h2>Cinco raspaditas, <span class="grad-text">un solo motor</span></h2>
+          <p class="lead">Cada modalidad tiene su propia identidad visual, mecánica y reglas, con un motor centralizado para la gestión de resultados y premios.</p>
+        </div>
+        <div class="modes" id="modeGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ ALCANCE ============ -->
+    <section class="section" id="alcance">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Alcance del desarrollo</span>
+          <h2>Qué incluye <span class="grad-text">el proyecto</span></h2>
+        </div>
+        <div class="grid grid-3" id="featGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ FÍSICAS ============ -->
+    <section class="section section-alt" id="fisicas">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Raspaditas físicas</span>
+          <h2>Del lote impreso <span class="grad-text">al premio validado</span></h2>
+          <p class="lead">Cada tarjeta lleva un código único y un QR que se valida en la plataforma, con control de lotes, inventario y distribución.</p>
+        </div>
+        <div class="flow reveal" id="flowFisica"></div>
+        <p class="flow-note reveal">La impresión de las tarjetas la realiza una imprenta especializada contratada por el cliente y no forma parte de esta inversión.</p>
+      </div>
+    </section>
+
+    <!-- ============ CRONOGRAMA ============ -->
+    <section class="section" id="cronograma">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Plazo de ejecución</span>
+          <h2>Desarrollo en <span class="grad-text" id="hPlazo"></span></h2>
+          <p class="lead">El plazo corre desde la aprobación de los requerimientos, la recepción del primer pago y la disponibilidad de los recursos e información necesarios.</p>
+        </div>
+        <ol class="months reveal" id="monthList"></ol>
+      </div>
+    </section>
+
+    <!-- ============ INVERSIÓN ============ -->
+    <section class="section section-alt" id="inversion">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Inversión del proyecto</span>
+          <h2>Cuatro pagos <span class="grad-text">por etapa</span></h2>
+          <p class="lead">Cada pago está asociado al cumplimiento de las etapas y entregables del cronograma.</p>
+        </div>
+        <div class="invest reveal">
+          <div class="card pagos-card">
+            <ol class="pagos" id="pagoList"></ol>
+            <div class="pagos-total"><span>Total</span><b id="investTotal"></b></div>
+          </div>
+          <aside class="invest-side">
+            <div class="card total-card">
+              <small>Inversión total por el desarrollo</small>
+              <b id="investBig"></b>
+              <span>Comprende el desarrollo de los módulos y funcionalidades descritos en el alcance de esta propuesta.</span>
+              <a class="btn btn-primary btn-block" href="../../#contacto">Aceptar propuesta</a>
+            </div>
+            <div class="card">
+              <h3>Mantenimiento y soporte</h3>
+              <div class="mant-price"><b id="mantBig"></b><span>al mes, una vez concluido el desarrollo</span></div>
+              <ul class="checks" id="mantList"></ul>
+              <p class="side-note">Los costos de infraestructura, servicios externos y nuevas funcionalidades se presupuestarán por separado.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONDICIONES ============ -->
+    <section class="section" id="condiciones">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Condiciones</span>
+          <h2>Entregables y <span class="grad-text">costos no incluidos</span></h2>
+        </div>
+        <div class="grid grid-2">
+          <div class="card reveal">
+            <h3>Entregables</h3>
+            <p class="side-note">Al finalizar el proyecto se entregará:</p>
+            <ul class="checks" id="entregaList"></ul>
+          </div>
+          <div class="card reveal">
+            <h3>Impresión de raspaditas físicas</h3>
+            <p class="side-note">La propuesta cubre la generación, identificación, administración y validación de las tarjetas mediante códigos únicos y QR, pero <b>no incluye la impresión ni la producción física</b>. El cliente podrá elegir y contratar directamente la imprenta, que deberá cotizar:</p>
+            <ul class="checks muted-list" id="imprentaList"></ul>
+          </div>
+          <div class="card reveal">
+            <h3>Otros conceptos no incluidos</h3>
+            <ul class="checks muted-list" id="externosList"></ul>
+          </div>
+          <div class="card reveal">
+            <h3>Consideraciones finales</h3>
+            <ul class="checks" id="consideraList"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CIERRE ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="closing reveal">
+          <h2>Raspaditas digitales y físicas en un mismo ecosistema</h2>
+          <p>Diseñada para iniciar operaciones en Santa Cruz de la Sierra y crecer hacia otros departamentos de Bolivia, sumando modalidades, puntos de venta y funcionalidades sin reconstruir la plataforma.</p>
+          <dl class="closing-kpis">
+            <div><dt>Inversión total</dt><dd id="cTotal"></dd></div>
+            <div><dt>Plazo de entrega</dt><dd id="cPlazo"></dd></div>
+            <div><dt>Mantenimiento mensual</dt><dd id="cMant"></dd></div>
+          </dl>
+          <a class="btn closing-btn" href="../../#contacto">Hablemos de tu proyecto</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer data-footer></footer>
+
+  <script src="../../assets/js/brand.js" data-root="../../" data-active="cotizaciones"></script>
+  <script src="index.js"></script>
+</body>
+</html>
