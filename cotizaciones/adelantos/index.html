@@ -187,7 +187,7 @@
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Cronograma</span>
-          <h2>Piloto listo en <span class="grad-text" id="totalWeeks">12 semanas</span></h2>
+          <h2>Piloto listo en <span class="grad-text" id="totalWeeks">16 semanas</span></h2>
           <p class="lead">Las últimas semanas operan el piloto con los primeros 100 clientes, con soporte directo del equipo.</p>
         </div>
         <div class="timeline reveal" id="timeline"></div>
@@ -204,9 +204,9 @@
         <div class="invest reveal">
           <div class="card invest-table-wrap">
             <table class="invest-table">
-              <thead><tr><th>Módulo</th><th class="num">Horas</th><th class="num">Subtotal</th></tr></thead>
+              <thead><tr><th>Módulo</th><th class="num">Horas</th></tr></thead>
               <tbody id="investBody"></tbody>
-              <tfoot><tr><td>Total</td><td class="num" id="investHours"></td><td class="num" id="investTotal"></td></tr></tfoot>
+              <tfoot><tr><td>Total</td><td class="num" id="investHours"></td></tr></tfoot>
             </table>
           </div>
           <aside class="invest-side">
@@ -217,8 +217,12 @@
               <a class="btn btn-primary btn-block" href="../../#contacto">Aceptar propuesta</a>
             </div>
             <div class="card">
-              <h3>Forma de pago</h3>
-              <ul class="checks"><li>40% al iniciar</li><li>30% al entregar la versión de prueba</li><li>30% al iniciar el piloto</li></ul>
+              <h3>Inversión del proyecto</h3>
+              <table class="invest-table pago-table">
+                <thead><tr><th>Mes</th><th class="num">Pago</th></tr></thead>
+                <tbody id="pagoBody"></tbody>
+                <tfoot><tr><td>Total</td><td class="num" id="pagoTotal"></td></tr></tfoot>
+              </table>
             </div>
             <div class="card">
               <h3>No incluye</h3>

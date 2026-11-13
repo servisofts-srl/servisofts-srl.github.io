@@ -134,3 +134,6 @@
   .mf-node { width: 130px; padding: 12px; }
   .role-switch button { padding: 9px 10px; font-size: .85rem; }
 }
+
+/* Inversión del proyecto (pagos mensuales) */
+.pago-table th, .pago-table td { padding: 12px 0; }

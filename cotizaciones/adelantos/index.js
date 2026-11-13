@@ -19,7 +19,6 @@ const MODELO = {
 
 const COTIZACION = {
   moneda: "Bs",
-  tarifaHora: null,           // ← define la tarifa por hora para calcular la inversión (ej. 120)
   modulos: [
     ["Descubrimiento y diseño UX/UI", "Reglas del modelo, flujos por rol y prototipo", 40],
     ["Núcleo de crédito", "Clientes, líneas, ciclos, comisión configurable y estados de cuenta", 70],
@@ -33,13 +32,19 @@ const COTIZACION = {
     ["QA, seguridad y despliegue", "Pruebas, auditoría, servidor y monitoreo", 34],
   ],
   fases: [
-    ["Descubrimiento y diseño", "Reglas y prototipo", 0, 2],
-    ["Núcleo de crédito", "Líneas, ciclos, API", 2, 3],
-    ["Integración Renova", "Historial y pagos", 4, 2],
-    ["Apps cliente, captador y cobrador", "Web + móvil", 5, 4],
-    ["Cobranza y comisiones", "Automatizaciones", 7, 2],
-    ["Panel administrativo", "Reportes", 8, 2],
-    ["QA y piloto con 100 clientes", "Operación asistida", 10, 2],
+    ["Descubrimiento y diseño", "Reglas y prototipo", 0, 3],
+    ["Núcleo de crédito", "Líneas, ciclos, API", 2, 4],
+    ["Integración Renova", "Historial y pagos", 5, 3],
+    ["Apps cliente, captador y cobrador", "Web + móvil", 6, 5],
+    ["Cobranza y comisiones", "Automatizaciones", 9, 3],
+    ["Panel administrativo", "Reportes", 10, 3],
+    ["QA y piloto con 100 clientes", "Operación asistida", 13, 3],
+  ],
+  pagos: [                    // inversión del proyecto en USD, dividida en 4 meses
+    ["1er mes", 1900],
+    ["2do mes", 1700],
+    ["3er mes", 1700],
+    ["4to mes", 1700],
   ],
 };
 
@@ -107,15 +112,17 @@ const fecha = (dias) => new Date(Date.now() + dias * 864e5).toLocaleDateString("
       <div class="tl-row"><div><b>${t}</b><small>${s}</small></div>
         <div class="tl-track"><div class="tl-bar" style="left:${(start / weeks) * 100}%;width:${(dur / weeks) * 100}%">${dur} sem</div></div></div>`).join("");
 
-  const rate = COTIZACION.tarifaHora;
-  const bs = (n) => `${COTIZACION.moneda} ${nf(Math.round(n))}`;
+  const usd = (n) => `USD ${nf(n)}`;
   const totalH = COTIZACION.modulos.reduce((a, m) => a + m[2], 0);
+  const totalUsd = COTIZACION.pagos.reduce((a, p) => a + p[1], 0);
   $("#investBody").innerHTML = COTIZACION.modulos.map(([t, d, h]) =>
-    `<tr><td>${t}<small>${d}</small></td><td class="num">${h} h</td><td class="num">${rate ? bs(h * rate) : "—"}</td></tr>`).join("");
+    `<tr><td>${t}<small>${d}</small></td><td class="num">${h} h</td></tr>`).join("");
   $("#investHours").textContent = `${totalH} h`;
-  $("#investTotal").textContent = rate ? bs(totalH * rate) : "—";
-  $("#investBig").textContent = rate ? bs(totalH * rate) : "A confirmar";
-  $("#investNote").textContent = `${totalH} horas estimadas · ${weeks} semanas${rate ? "" : " · precio final según alcance"}`;
+  $("#pagoBody").innerHTML = COTIZACION.pagos.map(([m, v]) =>
+    `<tr><td>${m}</td><td class="num">${usd(v)}</td></tr>`).join("");
+  $("#pagoTotal").textContent = usd(totalUsd);
+  $("#investBig").textContent = usd(totalUsd);
+  $("#investNote").textContent = `${COTIZACION.pagos.length} pagos mensuales · ${weeks} semanas`;
 })();
 
 /* ==========================================================
